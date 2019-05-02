@@ -22,7 +22,7 @@ public class LoginPanel extends JPanel {
 		// 부모 컴포넌트를 필드로 참조
 		this.f = f;
 
-		f.setSize(380, 210);
+		f.setSize(380, 240);
 		f.setLocationRelativeTo(null);
 		f.setTitle("로그인");
 
@@ -71,10 +71,24 @@ public class LoginPanel extends JPanel {
 				String id = idTextField.getText();
 				String pw = pwTextField.getText();
 
-				Login login = new Login();
-				login.login(new Customer(id, pw));
-				
-				MyUtil.changePanel(f, LoginPanel.this, new TestPanel(f));
+				if (!MyUtil.valid("아이디", idTextField)) {
+					System.out.println("아이디오류");
+				} else if (!MyUtil.valid("비밀번호", pwTextField)) {
+					System.out.println("비밀번호오류");
+				} else if (id.equals("admin") && pw.equals("admin")) {
+					System.out.println("관리자");
+				} else {
+					System.out.println("로그인 성공");
+					Login login = new Login();
+					int result = login.login(new Customer(id, pw));
+					if(result == 1) {
+						MyUtil.changePanel(f, LoginPanel.this, new TestPanel(f));						
+					}else if(result == 0) {
+						MyUtil.focusMsg("아이디가 존재하지 않습니다.", idTextField);
+					}else {
+						MyUtil.focusMsg("비밀번호가 올바르지 않습니다.", pwTextField);						
+					}
+				}
 
 			}
 		});

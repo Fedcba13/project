@@ -15,16 +15,18 @@ public class Customer implements Serializable {
 	private String pw;
 	private String addr;
 	private Date birth;
+	private String phone;
 	private ArrayList<Item> cart; // 장바구니
 
-	public Customer(String id, String name, String pw, String addr, Date birth) {
+	public Customer(String id, String name, String pw, String addr, Date birth, String phone) {
 		this.id = id;
 		this.name = name;
 		this.pw = pw;
 		this.addr = addr;
 		this.birth = birth;
+		this.phone = phone;
 	}
-	
+
 	public Customer(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
@@ -78,12 +80,20 @@ public class Customer implements Serializable {
 		this.cart = cart;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", pw=" + pw + ", addr=" + addr + ", birth=" + birth
-				+ ", cart=" + cart + "]";
+				+ ", phone=" + phone + ", cart=" + cart + "]";
 	}
-	
+
 	
 
 }
