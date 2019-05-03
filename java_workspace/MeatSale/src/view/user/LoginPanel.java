@@ -1,4 +1,4 @@
-package view;
+package view.user;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import common.MyUtil;
 import controller.Login;
 import model.vo.Customer;
+import view.MainFrame;
+import view.TestPanel;
+import view.manage.ManagerPanel;
 
 public class LoginPanel extends JPanel {
 
@@ -77,6 +80,8 @@ public class LoginPanel extends JPanel {
 					System.out.println("비밀번호오류");
 				} else if (id.equals("admin") && pw.equals("admin")) {
 					System.out.println("관리자");
+					MainFrame.user = new Customer("admin", "admin");
+					MyUtil.changePanel(f, LoginPanel.this, new ManagerPanel(f));
 				} else {
 					System.out.println("로그인 성공");
 					Login login = new Login();

@@ -11,6 +11,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import common.MyUtil;
+import view.user.LoginPanel;
+import view.user.UserInfoPanel;
 
 public class Menu extends JMenu {
 

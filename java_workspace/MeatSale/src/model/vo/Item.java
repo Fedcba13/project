@@ -1,21 +1,55 @@
 package model.vo;
 
-public class Item {
+import java.io.Serializable;
 
+public class Item implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private int itemNum;
 	private String itemName;
 	private int itemPrice; // 가격
 	private int itemAmount;
 	private String itemOrigin;
 	private String itemCategory;// 예 : 닭 소 양 돼지 등
 	private String itemCategory2; // 예 : 등심 다리 등
+	private int deliver; // 배송 기간  예) 2, 3  2일 3일
+	
 
-	public Item(String itemName, int itemPrice,int itemAmount, String itemOrigin, String itemCategory, String itemCategory2) {
+	public Item() {
+
+	}
+
+	public Item(int itemNum, String itemName, int itemPrice, int itemAmount, String itemOrigin, String itemCategory,
+			String itemCategory2) {
+		this.itemNum = itemNum;
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.itemAmount = itemAmount;
 		this.itemOrigin = itemOrigin;
 		this.itemCategory = itemCategory;
 		this.itemCategory2 = itemCategory2;
+	}
+
+	public Item(Item item) {
+		this.itemNum = item.itemNum;
+		this.itemName = item.itemName;
+		this.itemPrice = item.itemPrice;
+		this.itemAmount = item.itemAmount;
+		this.itemOrigin = item.itemOrigin;
+		this.itemCategory = item.itemCategory;
+		this.itemCategory2 = item.itemCategory2;
+	}
+
+	public int getItemNum() {
+		return itemNum;
+	}
+
+	public void setItemNum(int itemNum) {
+		this.itemNum = itemNum;
 	}
 
 	public String getItemName() {
@@ -33,8 +67,6 @@ public class Item {
 	public void setItemPrice(int itemPrice) {
 		this.itemPrice = itemPrice;
 	}
-	
-	
 
 	public int getItemAmount() {
 		return itemAmount;

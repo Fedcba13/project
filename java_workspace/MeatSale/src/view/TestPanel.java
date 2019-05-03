@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import common.MyUtil;
+import view.user.LoginPanel;
 
 public class TestPanel extends JPanel {
 

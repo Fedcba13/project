@@ -18,7 +18,7 @@ import view.MainFrame;
 
 public class Login {
 
-	ArrayList<Customer> customerArr;
+	private ArrayList<Customer> customerArr;
 
 	public Login() {
 		
@@ -60,6 +60,10 @@ public class Login {
 		saveFile();
 
 	}// addCustomer() 끝
+	
+	public ArrayList<Customer> getCustomer() {
+		return customerArr;
+	}
 	
 	public void saveFile() {
 		try (FileOutputStream fos = new FileOutputStream("data/customer.ser");

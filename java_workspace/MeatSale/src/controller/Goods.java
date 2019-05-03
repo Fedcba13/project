@@ -10,45 +10,47 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import model.vo.Customer;
 import model.vo.Item;
-import view.MainFrame;
 
 public class Goods {
 
-	ArrayList<Item> itemArr;
-	String fileUrl = "data/item.ser";
+	private ArrayList<Item> itemArr;
+	private String fileUrl = "data/item.ser";
 
 	public Goods() {
-		
-		//파일이 있는지 확인 후 없으면 기본값 넣기.
+
+		// 파일이 있는지 확인 후 없으면 기본값 넣기.
 		File file = new File(fileUrl);
-		
+
 		boolean isExists = file.exists();
-		
-		if(!isExists) {
+
+		if (!isExists) {
 			try (FileOutputStream fos = new FileOutputStream(fileUrl);
 					BufferedOutputStream bos = new BufferedOutputStream(fos);
 					ObjectOutputStream oos = new ObjectOutputStream(bos)) {
-				
+
 				itemArr = new ArrayList<Item>();
-				itemArr.add(new Item("호주산 소 등심", 3000, 10, "호주", "소", "등심"));
-				itemArr.add(new Item("돼지 삼겹살", 2500, 17, "호주", "돼지", "등심"));
-				itemArr.add(new Item("횡성 꽃등심", 5000, 30, "한국", "소", "꽃등심"));
-				itemArr.add(new Item("호주 양 갈비", 8200, 22, "호주", "양", "갈비"));
-				itemArr.add(new Item("닭 한마리", 7200, 82, "한국", "닭", "전체"));
+				itemArr.add(new Item(1, "호주산 소 등심", 3000, 10, "호주", "소", "등심"));
+				itemArr.add(new Item(2, "돼지 삼겹살", 2500, 17, "호주", "돼지", "등심"));
+				itemArr.add(new Item(3, "횡성 꽃등심", 5000, 30, "한국", "소", "꽃등심"));
+				itemArr.add(new Item(4, "호주 양 갈비", 8200, 22, "호주", "양", "갈비"));
+				itemArr.add(new Item(5, "닭 한마리", 7200, 82, "한국", "닭", "전체"));
 
 				oos.writeObject(itemArr);
 
 			} catch (IOException e) {
-				e.printStackTrace();
+
 			}
 		}
-		
+
 		itemArr = new ArrayList<Item>();
 
-		readCustomer();
-		
+		readItem();
+
+	}
+	
+	public ArrayList<Item> getGoods(){
+		return itemArr;
 	}
 
 	public void addItem(Item c) {// 상품 추가
@@ -58,7 +60,7 @@ public class Goods {
 		saveFile();
 
 	}// addCustomer() 끝
-	
+
 	public void saveFile() {
 		try (FileOutputStream fos = new FileOutputStream(fileUrl);
 				BufferedOutputStream bos = new BufferedOutputStream(fos);
@@ -71,7 +73,7 @@ public class Goods {
 		}
 	}
 
-	public void readCustomer() {// 회원 정보 불러오기.
+	public void readItem() {// 상품 정보 불러오기.
 
 		try (FileInputStream fis = new FileInputStream(fileUrl);
 				BufferedInputStream bis = new BufferedInputStream(fis);
@@ -89,25 +91,33 @@ public class Goods {
 		}
 
 	}// readCustomer() 끝
-	
-	public void setCustomer(Item c) {
-		
-		String id = c.getItemName();
+
+	public void setItem(Item c) {
+
+		int id = c.getItemNum();
 		int index = -1;
-		
-		for(int i = 0; i<itemArr.size(); i++) {
-			if(itemArr.get(i).getItemName().equals(id)) {
+
+		for (int i = 0; i < itemArr.size(); i++) {
+			if (itemArr.get(i).getItemNum() == id) {
 				index = i;
 				break;
 			}
 		}
-		
-		if(index != -1) {
+
+		if (index != -1) {
 			itemArr.set(index, c);
-		}	
-		
+		}
+
 		saveFile();
-		
+
+	}
+
+	public int getMaxNum() {
+		if (itemArr == null || itemArr.size() == 0) {
+			return 1;
+		} else {
+			return itemArr.get(itemArr.size() - 1).getItemNum()+1;
+		}
 	}
 
 }

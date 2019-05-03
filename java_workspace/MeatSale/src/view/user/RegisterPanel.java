@@ -1,4 +1,4 @@
-package view;
+package view.user;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import common.MyUtil;
 import controller.Login;
 import model.vo.Customer;
+import view.MainFrame;
 
 public class RegisterPanel extends JPanel {
 

@@ -1,4 +1,4 @@
-package view;
+package view.user;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -15,6 +15,8 @@ import javax.swing.border.LineBorder;
 import common.MyUtil;
 import controller.Login;
 import model.vo.Customer;
+import view.MainFrame;
+import view.TestPanel;
 
 public class UserInfoPanel extends JPanel {
 

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.vo.Customer;
+import view.user.LoginPanel;
 
 public class MainFrame extends JFrame{
 	
