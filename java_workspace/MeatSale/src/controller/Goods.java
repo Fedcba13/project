@@ -94,7 +94,26 @@ public class Goods {
 
 		saveFile();
 
-	}// addCustomer() 끝
+	}// addItem() 끝
+	
+	public void removeItem(Item c) {
+		
+		int index = -1;
+		
+		for(int i=0; i<itemArr.size(); i++) {
+			if(itemArr.get(i).getItemNum() == c.getItemNum()) {
+				index = i;
+				break;
+			}
+		}
+		
+		if(index != -1) {
+			itemArr.remove(index);
+		}
+		
+		saveFile();
+		
+	}
 
 	public void saveFile() {
 		try (FileOutputStream fos = new FileOutputStream(fileUrl);

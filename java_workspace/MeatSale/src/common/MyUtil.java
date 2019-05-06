@@ -55,8 +55,6 @@ public class MyUtil {
 	// 숫자인지 확인하는 메소드
 	public static boolean isNum(String s) {
 		
-		// 이미지를 눌렀을때 
-		JOptionPane.showMessageDialog(null, "0");
 		try {
 			Integer.parseInt(s);
 			return true;

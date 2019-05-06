@@ -75,15 +75,11 @@ public class LoginPanel extends JPanel {
 				String pw = pwTextField.getText();
 
 				if (!MyUtil.valid("아이디", idTextField)) {
-					System.out.println("아이디오류");
 				} else if (!MyUtil.valid("비밀번호", pwTextField)) {
-					System.out.println("비밀번호오류");
 				} else if (id.equals("admin") && pw.equals("admin")) {
-					System.out.println("관리자");
 					MainFrame.user = new Customer("admin", "admin");
 					MyUtil.changePanel(f, LoginPanel.this, new ManagerPanel(f));
 				} else {
-					System.out.println("로그인 성공");
 					Login login = new Login();
 					int result = login.login(new Customer(id, pw));
 					if(result == 1) {
@@ -98,7 +94,6 @@ public class LoginPanel extends JPanel {
 			}
 		});
 
-		System.out.println(MainFrame.user);
 	}
 
 }

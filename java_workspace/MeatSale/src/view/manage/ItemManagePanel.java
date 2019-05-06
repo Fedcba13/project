@@ -1,7 +1,10 @@
 package view.manage;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -10,6 +13,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import check.ItemAdd;
 import common.MyUtil;
 import controller.Goods;
 import model.vo.Item;
@@ -98,6 +102,47 @@ public class ItemManagePanel extends JPanel{
 		add(scrollPane);
 
 		scrollPane.setViewportView(table);
+		
+		JButton addItem = new JButton("아이템 추가");
+		addItem.setBounds(10,170,150,50);
+		add(addItem);
+		
+		addItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MyUtil.changePanel(f, MainFrame.currentPanel, new ItemAdd(f));
+			}
+		});
+		
+		JButton delItem = new JButton("아이템 삭제");
+		delItem.setBounds(180,170,150,50);
+		add(delItem);
+		
+		delItem.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int rowNum = table.getSelectedRow();
+				
+				if(rowNum != -1) {
+					
+					Item item = itemArr.get(rowNum);
+					int result = JOptionPane.showConfirmDialog(null, item.getItemName() +"을 정말 삭제할건가요?");
+
+					if (result == JOptionPane.YES_OPTION) {// 확인
+						goods.removeItem(item);
+						MyUtil.changePanel(f, ItemManagePanel.this, new ItemManagePanel(f));
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "삭제할 행을 선택해주세요.");
+				}
+				
+				
+				
+
+			}
+		});
 
 	}
 

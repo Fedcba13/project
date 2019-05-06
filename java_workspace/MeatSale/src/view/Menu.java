@@ -11,6 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import common.MyUtil;
+import view.manage.ManagerPanel;
 import view.shop.First;
 import view.user.LoginPanel;
 import view.user.UserInfoPanel;
@@ -29,7 +30,11 @@ public class Menu extends JMenu {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				if(MainFrame.user != null && MainFrame.user.getId().equals("admin")) {
+					MyUtil.changePanel(f, MainFrame.currentPanel, new ManagerPanel(f));
+				}else {
 				MyUtil.changePanel(f, MainFrame.currentPanel, new First(f));
+				}
 			}
 		});
 
@@ -75,13 +80,18 @@ public class Menu extends JMenu {
 		deliverMenu.add(deliverMenuItem);
 		deliverMenu.add(payMenuItem);
 
-		menuBar.add(mainMenu);
-		menuBar.add(cartMenu);
-		menuBar.add(deliverMenu);
-
-		if (MainFrame.user == null) {
+		if(MainFrame.user == null) {
+			menuBar.add(mainMenu);
+			menuBar.add(cartMenu);
+			menuBar.add(deliverMenu);
 			menuBar.add(loginMenu);
+		}else if (MainFrame.user.getId().equals("admin")) {
+			menuBar.add(mainMenu);
+			menuBar.add(logoutMenu);
 		} else {
+			menuBar.add(mainMenu);
+			menuBar.add(cartMenu);
+			menuBar.add(deliverMenu);
 			menuBar.add(logoutMenu);
 		}
 
