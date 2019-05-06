@@ -26,7 +26,7 @@ public class ItemManagePanel extends JPanel{
 		f.setLocationRelativeTo(null);
 
 		Goods goods = new Goods();
-		ArrayList<Item> itemArr = goods.getGoods();
+		ArrayList<Item> itemArr = goods.getItems();
 
 		String[] columns = { "이름", "가격", "수량", "원산지", "분류1", "분류2" };
 		Object[][] rowData = new Object[itemArr.size()][columns.length];

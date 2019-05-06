@@ -11,6 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import common.MyUtil;
+import view.shop.First;
 import view.user.LoginPanel;
 import view.user.UserInfoPanel;
 
@@ -28,7 +29,7 @@ public class Menu extends JMenu {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MyUtil.changePanel(f, MainFrame.currentPanel, new TestPanel(f));
+				MyUtil.changePanel(f, MainFrame.currentPanel, new First(f));
 			}
 		});
 
@@ -49,7 +50,7 @@ public class Menu extends JMenu {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				MainFrame.user = null;
-				MyUtil.changePanel(f, MainFrame.currentPanel, new TestPanel(f));
+				MyUtil.changePanel(f, MainFrame.currentPanel, new First(f));
 				JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.");
 			}
 		});

@@ -14,8 +14,8 @@ import common.MyUtil;
 import controller.Login;
 import model.vo.Customer;
 import view.MainFrame;
-import view.TestPanel;
 import view.manage.ManagerPanel;
+import view.shop.First;
 
 public class LoginPanel extends JPanel {
 
@@ -87,7 +87,7 @@ public class LoginPanel extends JPanel {
 					Login login = new Login();
 					int result = login.login(new Customer(id, pw));
 					if(result == 1) {
-						MyUtil.changePanel(f, LoginPanel.this, new TestPanel(f));						
+						MyUtil.changePanel(f, LoginPanel.this, new First(f));						
 					}else if(result == 0) {
 						MyUtil.focusMsg("아이디가 존재하지 않습니다.", idTextField);
 					}else {

@@ -14,9 +14,8 @@ import javax.swing.border.LineBorder;
 
 import common.MyUtil;
 import controller.Login;
-import model.vo.Customer;
 import view.MainFrame;
-import view.TestPanel;
+import view.shop.First;
 
 public class UserInfoPanel extends JPanel {
 
@@ -229,7 +228,7 @@ public class UserInfoPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MyUtil.changePanel(f, UserInfoPanel.this, new TestPanel(f));
+				MyUtil.changePanel(f, UserInfoPanel.this, new First(f));
 			}
 		});
 

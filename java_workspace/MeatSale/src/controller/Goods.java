@@ -30,11 +30,11 @@ public class Goods {
 					ObjectOutputStream oos = new ObjectOutputStream(bos)) {
 
 				itemArr = new ArrayList<Item>();
-				itemArr.add(new Item(1, "호주산 소 등심", 3000, 10, "호주", "소", "등심"));
-				itemArr.add(new Item(2, "돼지 삼겹살", 2500, 17, "호주", "돼지", "등심"));
-				itemArr.add(new Item(3, "횡성 꽃등심", 5000, 30, "한국", "소", "꽃등심"));
-				itemArr.add(new Item(4, "호주 양 갈비", 8200, 22, "호주", "양", "갈비"));
-				itemArr.add(new Item(5, "닭 한마리", 7200, 82, "한국", "닭", "전체"));
+				itemArr.add(new Item(1, "호주산 소 등심", 3000, 10, "호주", "소", "등심",2, "이미지없음"));
+				itemArr.add(new Item(2, "돼지 삼겹살", 2500, 17, "호주", "돼지", "등심",3, "이미지없음"));
+				itemArr.add(new Item(3, "횡성 꽃등심", 5000, 30, "한국", "소", "등심",2, "이미지없음"));
+				itemArr.add(new Item(4, "호주 양 갈비", 8200, 22, "호주", "양", "갈비",5, "이미지없음"));
+				itemArr.add(new Item(5, "닭 한마리", 7200, 82, "한국", "닭", "전체",2, "이미지없음"));
 
 				oos.writeObject(itemArr);
 
@@ -48,9 +48,33 @@ public class Goods {
 		readItem();
 
 	}
-	
-	public ArrayList<Item> getGoods(){
+
+	public ArrayList<Item> getItems() {
 		return itemArr;
+	}
+
+	public ArrayList<Item> getItems(String cate1) {
+		ArrayList<Item> tmpArr = (ArrayList<Item>) itemArr.clone();
+		for (int i = 0; i < tmpArr.size(); i++) {
+			if (!tmpArr.get(i).getItemCategory().equals(cate1)) {
+				tmpArr.remove(i);
+				i--;
+			}
+		}
+		return tmpArr;
+	}
+
+	public ArrayList<Item> getItems(String cate1, String cate2) {
+
+		ArrayList<Item> tmpArr = (ArrayList<Item>) itemArr.clone();
+		for (int i = 0; i < tmpArr.size(); i++) {
+			if (!(tmpArr.get(i).getItemCategory().equals(cate1) && tmpArr.get(i).getItemCategory2().equals(cate2))) {
+				tmpArr.remove(i);
+				i--;
+			}
+		}
+		return tmpArr;
+
 	}
 
 	public void addItem(Item c) {// 상품 추가
@@ -116,7 +140,7 @@ public class Goods {
 		if (itemArr == null || itemArr.size() == 0) {
 			return 1;
 		} else {
-			return itemArr.get(itemArr.size() - 1).getItemNum()+1;
+			return itemArr.get(itemArr.size() - 1).getItemNum() + 1;
 		}
 	}
 

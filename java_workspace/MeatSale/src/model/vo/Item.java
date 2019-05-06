@@ -17,6 +17,7 @@ public class Item implements Serializable{
 	private String itemCategory;// 예 : 닭 소 양 돼지 등
 	private String itemCategory2; // 예 : 등심 다리 등
 	private int deliver; // 배송 기간  예) 2, 3  2일 3일
+	private String itemImageUrl; // 아이템 이미지
 	
 
 	public Item() {
@@ -24,7 +25,7 @@ public class Item implements Serializable{
 	}
 
 	public Item(int itemNum, String itemName, int itemPrice, int itemAmount, String itemOrigin, String itemCategory,
-			String itemCategory2) {
+			String itemCategory2, int deliver, String itemImageUrl) {
 		this.itemNum = itemNum;
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
@@ -32,6 +33,8 @@ public class Item implements Serializable{
 		this.itemOrigin = itemOrigin;
 		this.itemCategory = itemCategory;
 		this.itemCategory2 = itemCategory2;
+		this.deliver = deliver;
+		this.itemImageUrl = itemImageUrl;
 	}
 
 	public Item(Item item) {
@@ -99,5 +102,32 @@ public class Item implements Serializable{
 	public void setItemCategory2(String itemCategory2) {
 		this.itemCategory2 = itemCategory2;
 	}
+	
+	
+
+	public int getDeliver() {
+		return deliver;
+	}
+
+	public void setDeliver(int deliver) {
+		this.deliver = deliver;
+	}
+
+	public String getItemImageUrl() {
+		return itemImageUrl;
+	}
+
+	public void setItemImageUrl(String itemImageUrl) {
+		this.itemImageUrl = itemImageUrl;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [itemNum=" + itemNum + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", itemAmount="
+				+ itemAmount + ", itemOrigin=" + itemOrigin + ", itemCategory=" + itemCategory + ", itemCategory2="
+				+ itemCategory2 + ", deliver=" + deliver + ", itemImageUrl=" + itemImageUrl + "]";
+	}
+	
+	
 
 }
