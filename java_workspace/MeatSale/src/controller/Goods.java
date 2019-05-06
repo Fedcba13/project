@@ -30,11 +30,22 @@ public class Goods {
 					ObjectOutputStream oos = new ObjectOutputStream(bos)) {
 
 				itemArr = new ArrayList<Item>();
-				itemArr.add(new Item(1, "호주산 소 등심", 3000, 10, "호주", "소", "등심",2, "이미지없음"));
-				itemArr.add(new Item(2, "돼지 삼겹살", 2500, 17, "호주", "돼지", "등심",3, "이미지없음"));
-				itemArr.add(new Item(3, "횡성 꽃등심", 5000, 30, "한국", "소", "등심",2, "이미지없음"));
-				itemArr.add(new Item(4, "호주 양 갈비", 8200, 22, "호주", "양", "갈비",5, "이미지없음"));
-				itemArr.add(new Item(5, "닭 한마리", 7200, 82, "한국", "닭", "전체",2, "이미지없음"));
+				itemArr.add(new Item(1, "호주산 소 등심1", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(2, "돼지 삼겹살", 2500, 17, "호주", "돼지", "등심", 3, "images/meat.jpg"));
+				itemArr.add(new Item(3, "횡성 꽃등심", 5000, 30, "한국", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(4, "호주 양 갈비", 8200, 22, "호주", "양", "갈비", 5, "images/meat.jpg"));
+				itemArr.add(new Item(5, "닭 한마리", 7200, 82, "한국", "닭", "전체", 2, "images/meat.jpg"));
+				itemArr.add(new Item(6, "호주산 소 등심6", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(7, "호주산 소 등심7", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(8, "호주산 소 등심8", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(9, "호주산 소 등심9", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(10, "호주산 소 등심10", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(11, "호주산 소 등심11", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(12, "호주산 소 등심12", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(13, "호주산 소 등심13", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(14, "호주산 소 등심14", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(15, "호주산 소 등심15", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(16, "호주산 소 등심16", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
 
 				oos.writeObject(itemArr);
 

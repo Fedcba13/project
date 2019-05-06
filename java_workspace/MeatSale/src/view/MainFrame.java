@@ -23,6 +23,7 @@ public class MainFrame extends JFrame{
 		currentPanel = j;
 		
 		
+		
 		setVisible(true);
 	}
 	
