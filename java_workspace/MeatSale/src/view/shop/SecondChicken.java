@@ -19,7 +19,8 @@ public class SecondChicken extends JPanel {
 		this.f = f;
 		setLayout(null);
 		
-	
+		f.setLocationRelativeTo(null);
+		f.setSize(450,400);
 		
 		JLabel tender = new JLabel("닭가슴살");
 		tender.setBounds(100, 137, 57, 15);

@@ -47,6 +47,14 @@ public class ManagerPanel extends JPanel{
 		deliverBtn.setBounds(115, 210, 130, 60);
 		add(deliverBtn);
 
+		deliverBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MyUtil.changePanel(f, MainFrame.currentPanel, new DeliverManagePanel(f));
+			}
+		});
+		
 
 	}
 

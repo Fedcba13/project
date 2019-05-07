@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,6 +18,7 @@ public class MainFrame extends JFrame {
 		setSize(300, 200);
 
 		add(new Menu(this));
+		setBackground(Color.white);
 
 		// 패널1
 		JPanel j = new LoginPanel(this);

@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import common.MyUtil;
+import controller.Pay;
+import model.vo.Payment;
 import view.MainFrame;
 
 public class First extends JPanel {
@@ -23,8 +26,9 @@ public class First extends JPanel {
 	public First(MainFrame f) {
 		this.f = f;
 
-		f.setSize(450, 350);
+		f.setSize(450, 400);
 		setLayout(null);
+		f.setLocationRelativeTo(null);
 
 		beefPanel = new FirstPanel(f, "Images/beef.gif");
 		beefPanel.setBounds(12, 10, 213, 140);

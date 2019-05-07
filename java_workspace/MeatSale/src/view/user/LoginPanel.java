@@ -52,6 +52,12 @@ public class LoginPanel extends JPanel {
 		JLabel findIdPw = new JLabel("ID/PW 찾기");
 		findIdPw.setBounds(119, 144, 63, 15);
 		add(findIdPw);
+		findIdPw.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MyUtil.changePanel(f, MainFrame.currentPanel, new FindInfo(f));
+			}
+		});
 
 		JLabel register = new JLabel("회원가입");
 		register.setBounds(257, 144, 55, 15);

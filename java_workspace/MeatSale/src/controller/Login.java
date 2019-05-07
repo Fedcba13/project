@@ -21,24 +21,29 @@ public class Login {
 	private ArrayList<Customer> customerArr;
 
 	public Login() {
-		
-		//파일이 있는지 확인 후 없으면 기본값 넣기.
+
+		// 파일이 있는지 확인 후 없으면 기본값 넣기.
 		File file = new File("data/customer.ser");
-		
+
 		boolean isExists = file.exists();
-		
-		if(!isExists) {
+
+		if (!isExists) {
 			try (FileOutputStream fos = new FileOutputStream("data/customer.ser");
 					BufferedOutputStream bos = new BufferedOutputStream(fos);
 					ObjectOutputStream oos = new ObjectOutputStream(bos)) {
-				
+
 				Calendar calendar = new GregorianCalendar(1994, 3, 22);
 				customerArr = new ArrayList<Customer>();
-				customerArr.add(new Customer("111", "김지민", "111", "서울시 강남구", new Date(calendar.getTimeInMillis()), "01048772366"));
+				customerArr.add(new Customer("123", "김지민", "123", "서울시 강남구", new Date(calendar.getTimeInMillis()),
+						"01048772366"));
+				customerArr.add(new Customer("111", "김지민", "111", "서울시 강남구", new Date(calendar.getTimeInMillis()),
+						"01048772366"));
 				calendar = new GregorianCalendar(1991, 7, 15);
-				customerArr.add(new Customer("222", "홍수현", "222", "서울시 관악구", new Date(calendar.getTimeInMillis()), "01012345678"));
+				customerArr.add(new Customer("222", "홍수현", "222", "서울시 관악구", new Date(calendar.getTimeInMillis()),
+						"01012345678"));
 				calendar = new GregorianCalendar(1996, 8, 12);
-				customerArr.add(new Customer("333", "이예림", "333", "서울시 서초구", new Date(calendar.getTimeInMillis()), "01048231187"));
+				customerArr.add(new Customer("333", "이예림", "333", "서울시 서초구", new Date(calendar.getTimeInMillis()),
+						"01048231187"));
 
 				oos.writeObject(customerArr);
 
@@ -46,11 +51,11 @@ public class Login {
 				e.printStackTrace();
 			}
 		}
-		
+
 		customerArr = new ArrayList<Customer>();
 
 		readCustomer();
-		
+
 	}
 
 	public void addCustomer(Customer c) {// 회원 추가
@@ -60,11 +65,11 @@ public class Login {
 		saveFile();
 
 	}// addCustomer() 끝
-	
+
 	public ArrayList<Customer> getCustomer() {
 		return customerArr;
 	}
-	
+
 	public void saveFile() {
 		try (FileOutputStream fos = new FileOutputStream("data/customer.ser");
 				BufferedOutputStream bos = new BufferedOutputStream(fos);
@@ -105,44 +110,62 @@ public class Login {
 		}
 		return true;
 	}
-	
-	//로그인 메소드
-	//1: 로그인성공, 0: 아이디 없음, -1 : 비밀번호 오류
+
+	// 로그인 메소드
+	// 1: 로그인성공, 0: 아이디 없음, -1 : 비밀번호 오류
 	public int login(Customer c) {
-		
-		for(Customer cu : customerArr) {
-			if(cu.getId().equals(c.getId())) {
-				if(cu.getPw().equals(c.getPw())) {
+
+		for (Customer cu : customerArr) {
+			if (cu.getId().equals(c.getId())) {
+				if (cu.getPw().equals(c.getPw())) {
 					MainFrame.user = cu;
 					return 1;
-				}else {
+				} else {
 					return -1;
 				}
 			}
 		}
-		
+
 		return 0;
-		
+
 	}
-	
+
 	public void setCustomer(Customer c) {
-		
+
 		String id = c.getId();
 		int index = -1;
-		
-		for(int i = 0; i<customerArr.size(); i++) {
-			if(customerArr.get(i).getId().equals(id)) {
+
+		for (int i = 0; i < customerArr.size(); i++) {
+			if (customerArr.get(i).getId().equals(id)) {
 				index = i;
 				break;
 			}
 		}
-		
-		if(index != -1) {
+
+		if (index != -1) {
 			customerArr.set(index, c);
-		}	
-		
+		}
+
 		saveFile();
-		
+
+	}
+
+	public String findId(String name, String phone) {
+		for (Customer c : customerArr) {
+			if(c.getName().equals(name) && c.getPhone().equals(phone)) {
+				return c.getId();
+			}
+		}
+		return null;
+	}
+	
+	public String findPw(String id, String name, String phone) {
+		for (Customer c : customerArr) {
+			if(c.getId().equals(id) && c.getName().equals(name) && c.getPhone().equals(phone)) {
+				return c.getPw();
+			}
+		}
+		return null;
 	}
 
 }

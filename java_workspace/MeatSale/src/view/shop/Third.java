@@ -108,7 +108,6 @@ public class Third extends JPanel {
 		rightLabel.addMouseListener(new MouseAdapter() {
 		
 			public void mouseClicked(MouseEvent e) {
-				System.out.println(itemArr.size());
 				if (itemArr.size() - 1 > num4) {
 					MyUtil.changePanel(f, Third.this, new Third(f, cate1, cate2, pageNum + 1));
 				} else {

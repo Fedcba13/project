@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Currency;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -99,6 +100,10 @@ public class UserManagePanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 10, 600, 150);
 		add(scrollPane);
+		
+		JLabel hint = new JLabel("<html>테이블에서 직접 수정시<br>실제 값이 수정됩니다.</html>");
+		hint.setBounds(10,170,300,100);
+		add(hint);
 
 		scrollPane.setViewportView(table);
 

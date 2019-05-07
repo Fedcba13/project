@@ -23,7 +23,8 @@ public class SecondBeef extends JPanel {
 		
 		this.f = f;
 		
-		f.setSize(450,350);
+		f.setLocationRelativeTo(null);
+		f.setSize(450,400);
 		setLayout(null);
 		
 		

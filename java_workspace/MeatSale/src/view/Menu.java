@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import check.MyCart;
 import common.MyUtil;
 import view.manage.ManagerPanel;
 import view.shop.First;
@@ -39,6 +40,14 @@ public class Menu extends JMenu {
 		});
 
 		JMenu cartMenu = new JMenu("장바구니");
+		cartMenu.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MyUtil.changePanel(f, MainFrame.currentPanel, new MyCart(f));
+			}
+		});
+		
 		JMenu deliverMenu = new JMenu("마이페이지");// 회원정보 수정. 배송조회 . 결제 내역
 		JMenu loginMenu = new JMenu("로그인");
 		loginMenu.addMouseListener(new MouseAdapter() {

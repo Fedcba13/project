@@ -2,13 +2,13 @@ package model.vo;
 
 import java.io.Serializable;
 
-public class Item implements Serializable{
+public class Item implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private int itemNum;
 	private String itemName;
 	private int itemPrice; // 가격
@@ -16,9 +16,8 @@ public class Item implements Serializable{
 	private String itemOrigin;
 	private String itemCategory;// 예 : 닭 소 양 돼지 등
 	private String itemCategory2; // 예 : 등심 다리 등
-	private int deliver; // 배송 기간  예) 2, 3  2일 3일
+	private int deliver; // 배송 기간 예) 2, 3 2일 3일
 	private String itemImageUrl; // 아이템 이미지
-	
 
 	public Item() {
 
@@ -45,6 +44,8 @@ public class Item implements Serializable{
 		this.itemOrigin = item.itemOrigin;
 		this.itemCategory = item.itemCategory;
 		this.itemCategory2 = item.itemCategory2;
+		this.deliver = item.deliver;
+		this.itemImageUrl = item.itemImageUrl;
 	}
 
 	public int getItemNum() {
@@ -102,8 +103,6 @@ public class Item implements Serializable{
 	public void setItemCategory2(String itemCategory2) {
 		this.itemCategory2 = itemCategory2;
 	}
-	
-	
 
 	public int getDeliver() {
 		return deliver;
@@ -127,7 +126,5 @@ public class Item implements Serializable{
 				+ itemAmount + ", itemOrigin=" + itemOrigin + ", itemCategory=" + itemCategory + ", itemCategory2="
 				+ itemCategory2 + ", deliver=" + deliver + ", itemImageUrl=" + itemImageUrl + "]";
 	}
-	
-	
 
 }

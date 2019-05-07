@@ -18,7 +18,8 @@ public class SecondPork extends JPanel {
 	public SecondPork(MainFrame f) {
 
 		this.f = f;
-		
+		f.setLocationRelativeTo(null);
+		f.setSize(450,400);
 		setLayout(null);
 		
 		

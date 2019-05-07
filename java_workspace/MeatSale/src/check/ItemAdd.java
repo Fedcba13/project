@@ -43,12 +43,12 @@ public class ItemAdd extends JPanel {
 	public ItemAdd(MainFrame f) {
 		this.f = f;
 		setBounds(100, 100, 500, 400);
-		f.setSize(600, 500);
+		f.setSize(600, 580);
 		setLayout(null);
 		f.setTitle("상품 추가");
 
 		JLabel image = new JLabel();
-		image.setBounds(0, 300, 100, 100);
+		image.setBounds(188, 10, 100, 100);
 		image.setBorder(new LineBorder(Color.black));
 		add(image);
 
@@ -62,7 +62,7 @@ public class ItemAdd extends JPanel {
 		});
 
 		JButton addPic = new JButton("사진 추가");
-		addPic.setBounds(150, 300, 100, 50);
+		addPic.setBounds(300, 10, 100, 50);
 		addPic.addActionListener(new ActionListener() {
 
 			@Override
@@ -105,7 +105,7 @@ public class ItemAdd extends JPanel {
 		});
 
 		JButton delPic = new JButton("사진 삭제");
-		delPic.setBounds(150, 360, 100, 50);
+		delPic.setBounds(300, 60, 100, 50);
 		delPic.addActionListener(new ActionListener() {
 
 			@Override
@@ -119,7 +119,7 @@ public class ItemAdd extends JPanel {
 		add(delPic);
 
 		JPanel namePanel = new JPanel();
-		namePanel.setBounds(0, 0, 484, 38);
+		namePanel.setBounds(12, 126, 560, 38);
 		JLabel nameLabel = new JLabel("상품 이름을 입력하세요 : ");
 		JTextField nameField = new JTextField(10);
 
@@ -127,7 +127,7 @@ public class ItemAdd extends JPanel {
 		namePanel.add(nameField);
 
 		JPanel pricePanel = new JPanel();
-		pricePanel.setBounds(0, 38, 484, 38);
+		pricePanel.setBounds(12, 174, 560, 38);
 		JLabel priceLabel = new JLabel("상품 가격을 입력하세요 : ");
 		JTextField priceField = new JTextField(10);
 
@@ -135,7 +135,7 @@ public class ItemAdd extends JPanel {
 		pricePanel.add(priceField);
 
 		JPanel amountPanel = new JPanel();
-		amountPanel.setBounds(0, 76, 484, 38);
+		amountPanel.setBounds(12, 222, 560, 38);
 		JLabel amountLabel = new JLabel("상품의 수량을 입력하세요 : ");
 		JTextField amountField = new JTextField(10);
 
@@ -143,7 +143,7 @@ public class ItemAdd extends JPanel {
 		amountPanel.add(amountField);
 
 		JPanel originPanel = new JPanel();
-		originPanel.setBounds(0, 114, 484, 38);
+		originPanel.setBounds(12, 270, 560, 38);
 		JLabel originLabel = new JLabel("상품의 원산지를 입력하세요 : ");
 		JTextField originField = new JTextField(10);
 
@@ -151,7 +151,7 @@ public class ItemAdd extends JPanel {
 		originPanel.add(originField);
 
 		JPanel categoryPanel = new JPanel();
-		categoryPanel.setBounds(0, 152, 484, 38);
+		categoryPanel.setBounds(12, 318, 560, 38);
 		JLabel categoryLabel = new JLabel("고기 종류");
 		JComboBox<String> categoryBox = new JComboBox<String>(cate);
 
@@ -159,7 +159,7 @@ public class ItemAdd extends JPanel {
 		categoryPanel.add(categoryBox);
 
 		JPanel categoryPanel2 = new JPanel();
-		categoryPanel2.setBounds(0, 190, 484, 38);
+		categoryPanel2.setBounds(12, 366, 560, 38);
 		JLabel categoryLabel2 = new JLabel("부위");
 
 		JComboBox<String> categoryBox2 = new JComboBox<String>();
@@ -201,7 +201,7 @@ public class ItemAdd extends JPanel {
 		categoryPanel2.add(categoryBox2);
 
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBounds(0, 228, 484, 38);
+		buttonPanel.setBounds(12, 462, 560, 38);
 		JButton addButton = new JButton("추가");
 		JButton cancel = new JButton("취소");
 
@@ -236,6 +236,17 @@ public class ItemAdd extends JPanel {
 		buttonPanel.add(addButton);
 		buttonPanel.add(cancel);
 
+		JPanel deliveryPanel = new JPanel();
+		deliveryPanel.setBounds(12, 414, 560, 38);
+		f.getContentPane().add(deliveryPanel);
+
+		JLabel deliveryLabel = new JLabel("배송일");
+		deliveryPanel.add(deliveryLabel);
+
+		JTextField deliveryTextField = new JTextField();
+		deliveryPanel.add(deliveryTextField);
+		deliveryTextField.setColumns(10);
+
 		add(namePanel);
 		add(pricePanel);
 		add(amountPanel);
@@ -243,6 +254,7 @@ public class ItemAdd extends JPanel {
 		add(categoryPanel);
 		add(categoryPanel2);
 		add(buttonPanel);
+		add(deliveryPanel);
 
 	}
 
