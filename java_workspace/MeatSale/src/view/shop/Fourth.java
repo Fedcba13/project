@@ -145,6 +145,11 @@ public class Fourth extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				if(MainFrame.user == null) {
+					JOptionPane.showMessageDialog(null, "로그인 부터 해주세요.");
+					return;
+				}
 
 				if (Integer.parseInt(spinner.getValue().toString()) == 0) {
 					JOptionPane.showMessageDialog(null, "재고가 없어서 구매가 불가능합니다.");
