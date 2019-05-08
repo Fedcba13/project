@@ -43,6 +43,9 @@ public class Fourth extends JPanel {
 
 		f.setSize(450, 400);
 		f.setLocationRelativeTo(null);
+		f.setTitle("상품 상세 화면");
+		setBackground(Color.white);
+		
 		setLayout(null);
 
 		Image scaledImage = new ImageIcon(item.getItemImageUrl()).getImage().getScaledInstance(150, 140, 0);

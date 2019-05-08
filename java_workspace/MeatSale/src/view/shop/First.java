@@ -26,6 +26,7 @@ public class First extends JPanel {
 	public First(MainFrame f) {
 		this.f = f;
 
+		f.setTitle("MeatSale");
 		f.setSize(450, 400);
 		setLayout(null);
 		f.setLocationRelativeTo(null);

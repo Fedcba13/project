@@ -1,5 +1,6 @@
 package view.user;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -35,11 +36,12 @@ public class PaymentHistory extends JPanel {
 		this.f = f;
 		setLayout(null);
 
+		setBackground(Color.white);
+		f.setTitle("결제 내역 확인");
 		f.setSize(650, 500);
 		f.setLocationRelativeTo(null);
 
 		Pay pay = new Pay();
-		ArrayList<Payment> payArr = pay.getPayments();
 
 		columns = new String[] { "구매자", "이름", "가격", "수량", "배송소요일", "구매날짜", "배송현황" };
 		Object[][] rowData = pay.getArr(null, name);
@@ -52,7 +54,7 @@ public class PaymentHistory extends JPanel {
 			public void tableChanged(TableModelEvent e) {
 
 				JOptionPane.showMessageDialog(null, "수정 금지");
-				MyUtil.changePanel(f, MainFrame.currentPanel, new DeliverManagePanel(f));
+				MyUtil.changePanel(f, MainFrame.currentPanel, new PaymentHistory(f, name));
 
 			}
 		});
@@ -73,7 +75,7 @@ public class PaymentHistory extends JPanel {
 
 		JRadioButton completeRadio = new JRadioButton("배송완료");
 		completeRadio.setBounds(322, 58, 121, 23);
-		add(completeRadio);	
+		add(completeRadio);
 
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(allRadio);
@@ -84,7 +86,7 @@ public class PaymentHistory extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				JRadioButton jr = (JRadioButton) e.getSource();
 				Object[][] obj;
 				if (jr.getText().equals("전체 보기")) {
@@ -105,6 +107,11 @@ public class PaymentHistory extends JPanel {
 
 		ingRadio.addActionListener(ac);
 		completeRadio.addActionListener(ac);
+
+		allRadio.setBackground(Color.white);
+		ingRadio.setBackground(Color.white);
+		completeRadio.setBackground(Color.white);
+		table.setBackground(Color.white);
 
 	}
 

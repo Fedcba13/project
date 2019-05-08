@@ -141,6 +141,8 @@ public class LoginPanel extends JPanel {
 			 }
 
 		});
+		
+		idTextField.requestFocus(true);
 
 	}
 

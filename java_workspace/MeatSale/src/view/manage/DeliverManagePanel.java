@@ -1,5 +1,6 @@
 package view.manage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -36,7 +37,10 @@ public class DeliverManagePanel extends JPanel {
 
 	public DeliverManagePanel(MainFrame f) {
 		this.f = f;
+
+		f.setTitle("배송 목록 화면");
 		setLayout(null);
+		setBackground(Color.white);
 
 		f.setSize(650, 500);
 		f.setLocationRelativeTo(null);
@@ -123,22 +127,26 @@ public class DeliverManagePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Object[][] obj;
-				
-				if(allRadio.isSelected()) {
+
+				if (allRadio.isSelected()) {
 					obj = pay.getArr(null, searchId.getText());
-				}else if(ingRadio.isSelected()) {
+				} else if (ingRadio.isSelected()) {
 					obj = pay.getArr("배송중", searchId.getText());
-				}else {
+				} else {
 					obj = pay.getArr("배송완료", searchId.getText());
 				}
-				
+
 				DefaultTableModel model = new DefaultTableModel(obj, columns);
 				table.setModel(model);
-				
+
 			}
 		});
+
+		ingRadio.setBackground(Color.white);
+		allRadio.setBackground(Color.white);
+		completeRadio.setBackground(Color.white);
 
 	}
 

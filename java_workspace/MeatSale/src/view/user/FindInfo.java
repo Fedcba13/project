@@ -1,5 +1,6 @@
 package view.user;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -28,6 +29,9 @@ public class FindInfo extends JPanel {
 
 	public FindInfo(MainFrame f) {
 		this.f = f;
+		
+		setBackground(Color.white);
+		f.setTitle("ID/PW찾기");
 		f.setSize(300, 300);
 		f.setLocationRelativeTo(null);
 		setLayout(null);
@@ -258,6 +262,12 @@ public class FindInfo extends JPanel {
 		add(findIdPanel);
 		curPanel = findIdPanel;
 
+		findIdPanel.setBackground(Color.white);
+		findPwPanel.setBackground(Color.white);
+		
+		idRadio.setBackground(Color.white);
+		pwRadio.setBackground(Color.white);
+		
 		idRadio.addActionListener(al);
 		pwRadio.addActionListener(al);
 

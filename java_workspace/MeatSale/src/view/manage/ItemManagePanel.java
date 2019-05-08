@@ -1,5 +1,6 @@
 package view.manage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ public class ItemManagePanel extends JPanel{
 		this.f = f;
 		setLayout(null);
 
+		f.setTitle("상품 목록 화면");
+		setLayout(null);
+		setBackground(Color.white);
+		
 		f.setSize(650, 500);
 		f.setLocationRelativeTo(null);
 

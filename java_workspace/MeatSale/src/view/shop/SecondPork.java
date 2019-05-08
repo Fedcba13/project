@@ -1,5 +1,6 @@
 package view.shop;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,6 +19,8 @@ public class SecondPork extends JPanel {
 	public SecondPork(MainFrame f) {
 
 		this.f = f;
+		f.setTitle("돼지 부위 선택 화면");
+		setBackground(Color.white);
 		f.setLocationRelativeTo(null);
 		f.setSize(450,400);
 		setLayout(null);

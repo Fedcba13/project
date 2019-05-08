@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.vo.Customer;
+import view.shop.First;
 import view.user.LoginPanel;
 
 public class MainFrame extends JFrame {
@@ -20,10 +21,12 @@ public class MainFrame extends JFrame {
 		add(new Menu(this));
 		setBackground(Color.white);
 
+		setResizable(false);
+		
 		// 패널1
-		JPanel j = new LoginPanel(this);
-		add(j);
-		currentPanel = j;
+		JPanel first = new First(this);
+		add(first);
+		currentPanel = first;
 
 		setVisible(true);
 	}
