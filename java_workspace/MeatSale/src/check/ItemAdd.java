@@ -205,34 +205,6 @@ public class ItemAdd extends JPanel {
 		JButton addButton = new JButton("추가");
 		JButton cancel = new JButton("취소");
 
-		addButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Goods goods = new Goods();
-				String itemName = nameField.getText();
-				int itemPrice = Integer.parseInt(priceField.getText());
-				int itemAmount = Integer.parseInt(amountField.getText());
-				String itemOrigin = originField.getText();
-				String itemCategory = categoryBox.getSelectedItem().toString();
-				String itemCategory2 = categoryBox2.getSelectedItem().toString();
-				int deliver = 3; // 그냥 일단 넣음
-				String itemImageUrl = paint;
-
-				Item item = new Item(goods.getMaxNum(), itemName, itemPrice, itemAmount, itemOrigin, itemCategory,
-						itemCategory2, deliver, itemImageUrl);
-				System.out.println(item);
-				goods.addItem(item);
-				MyUtil.changePanel(f, MainFrame.currentPanel, new ItemManagePanel(f));
-			}
-		});
-
-		cancel.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				MyUtil.changePanel(f, MainFrame.currentPanel, new ItemManagePanel(f));
-			}
-		});
-
 		buttonPanel.add(addButton);
 		buttonPanel.add(cancel);
 
@@ -255,6 +227,59 @@ public class ItemAdd extends JPanel {
 		add(categoryPanel2);
 		add(buttonPanel);
 		add(deliveryPanel);
+
+		addButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				// itemPrice itemAmount deliver
+
+				if (!(MyUtil.valid("이름", nameField) && MyUtil.valid("가격", priceField) && MyUtil.valid("수량", amountField)
+						&& MyUtil.valid("원산지", originField) && MyUtil.valid("소요일", deliveryTextField))) {
+					return;
+				} else if (!MyUtil.isNum(priceField.getText())) {
+					MyUtil.focusMsg("가격은 숫자만 가능합니다", priceField);
+					return;
+				} else if (!MyUtil.isNum(amountField.getText())) {
+					MyUtil.focusMsg("수량은 숫자만 가능합니다", amountField);
+					return;
+				} else if (!MyUtil.isNum(deliveryTextField.getText())) {
+					MyUtil.focusMsg("소요일은 숫자만 가능합니다", deliveryTextField);
+					return;
+				} else {
+					
+					if(paint == null ||paint.equals("")) {
+						paint = "images/default.jpg";
+					}
+					
+					Goods goods = new Goods();
+					String itemName = nameField.getText();
+					int itemPrice = Integer.parseInt(priceField.getText());
+					int itemAmount = Integer.parseInt(amountField.getText());
+					String itemOrigin = originField.getText();
+					String itemCategory = categoryBox.getSelectedItem().toString();
+					String itemCategory2 = categoryBox2.getSelectedItem().toString();
+					int deliver = Integer.parseInt(deliveryTextField.getText());
+					String itemImageUrl = paint;
+
+					Item item = new Item(goods.getMaxNum(), itemName, itemPrice, itemAmount, itemOrigin, itemCategory,
+							itemCategory2, deliver, itemImageUrl);
+					System.out.println(item);
+					goods.addItem(item);
+					MyUtil.changePanel(f, MainFrame.currentPanel, new ItemManagePanel(f));
+					
+				}
+
+				
+			}
+		});
+
+		cancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MyUtil.changePanel(f, MainFrame.currentPanel, new ItemManagePanel(f));
+			}
+		});
 
 	}
 

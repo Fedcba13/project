@@ -59,6 +59,7 @@ public class ItemManagePanel extends JPanel{
 				String newStr = tm.getValueAt(rowIndex, columnIndex).toString();
 
 				// "이름", "가격", "수량", "원산지", "분류1", "분류2"
+				
 				if (columnIndex == 4) {
 					JOptionPane.showMessageDialog(null, "분류1은 변경 금지 !! ");
 				}else if(columnIndex==5) {
@@ -73,19 +74,26 @@ public class ItemManagePanel extends JPanel{
 					}else if(columnIndex == 1) {//가격
 						int tmp = itemArr.get(rowIndex).getItemPrice();
 						str = tmp + "";
-						c.setItemPrice(tmp);
+						if(!MyUtil.isNum(newStr)){
+							JOptionPane.showMessageDialog(null, "숫자를 입력하세요.");
+						}
+						c.setItemPrice(Integer.parseInt(newStr));
 					}else if(columnIndex == 2) {//수량
 						int tmp = itemArr.get(rowIndex).getItemAmount();
 						str = tmp + "";
-						c.setItemAmount(tmp);
+						if(!MyUtil.isNum(newStr)){
+							JOptionPane.showMessageDialog(null, "숫자를 입력하세요.");
+						}
+						c.setItemAmount(Integer.parseInt(newStr));
 					}else if(columnIndex == 3) {//원산지
 						str = itemArr.get(rowIndex).getItemOrigin();
-						c.setItemOrigin(str);
+						c.setItemOrigin(newStr);
 					}
 					
 					int result = JOptionPane.showConfirmDialog(null, str + "  =>  " + newStr + "로 변경 하시겠습니까?");
 
 					if (result == JOptionPane.YES_OPTION) {// 확인
+						System.out.println("확인\n"+c);
 						goods.setItem(c);
 					}
 					

@@ -12,9 +12,11 @@ import javax.swing.JOptionPane;
 
 import check.MyCart;
 import common.MyUtil;
+import view.manage.DeliverManagePanel;
 import view.manage.ManagerPanel;
 import view.shop.First;
 import view.user.LoginPanel;
+import view.user.PaymentHistory;
 import view.user.UserInfoPanel;
 
 public class Menu extends JMenu {
@@ -31,24 +33,29 @@ public class Menu extends JMenu {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(MainFrame.user != null && MainFrame.user.getId().equals("admin")) {
+				if (MainFrame.user != null && MainFrame.user.getId().equals("admin")) {
 					MyUtil.changePanel(f, MainFrame.currentPanel, new ManagerPanel(f));
-				}else {
-				MyUtil.changePanel(f, MainFrame.currentPanel, new First(f));
+				} else {
+					MyUtil.changePanel(f, MainFrame.currentPanel, new First(f));
 				}
 			}
 		});
 
 		JMenu cartMenu = new JMenu("장바구니");
 		cartMenu.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MyUtil.changePanel(f, MainFrame.currentPanel, new MyCart(f));
+				if (MainFrame.user == null) {
+					JOptionPane.showMessageDialog(null, "로그인 부터 하세요.");
+				} else {
+					MyUtil.changePanel(f, MainFrame.currentPanel, new MyCart(f));
+				}
 			}
 		});
-		
+
 		JMenu deliverMenu = new JMenu("마이페이지");// 회원정보 수정. 배송조회 . 결제 내역
+
 		JMenu loginMenu = new JMenu("로그인");
 		loginMenu.addMouseListener(new MouseAdapter() {
 			@Override
@@ -82,19 +89,28 @@ public class Menu extends JMenu {
 			}
 		});
 
-		JMenuItem deliverMenuItem = new JMenuItem("배송조회");
 		JMenuItem payMenuItem = new JMenuItem("결제 내역");
 
+		payMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (MainFrame.user == null) {
+					JOptionPane.showMessageDialog(null, "로그인 부터 하세요.");
+				} else {
+					MyUtil.changePanel(f, MainFrame.currentPanel, new PaymentHistory(f, MainFrame.user.getId()));
+				}
+			}
+		});
+
 		deliverMenu.add(modifyMenuItem);
-		deliverMenu.add(deliverMenuItem);
 		deliverMenu.add(payMenuItem);
 
-		if(MainFrame.user == null) {
+		if (MainFrame.user == null) {
 			menuBar.add(mainMenu);
 			menuBar.add(cartMenu);
 			menuBar.add(deliverMenu);
 			menuBar.add(loginMenu);
-		}else if (MainFrame.user.getId().equals("admin")) {
+		} else if (MainFrame.user.getId().equals("admin")) {
 			menuBar.add(mainMenu);
 			menuBar.add(logoutMenu);
 		} else {

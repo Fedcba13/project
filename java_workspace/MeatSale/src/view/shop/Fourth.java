@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
@@ -38,10 +41,10 @@ public class Fourth extends JPanel {
 		this.f = f;
 		this.item = item;
 
-		f.setSize(450,400);
+		f.setSize(450, 400);
 		f.setLocationRelativeTo(null);
 		setLayout(null);
-		
+
 		Image scaledImage = new ImageIcon(item.getItemImageUrl()).getImage().getScaledInstance(150, 140, 0);
 		JLabel name = new JLabel(item.getItemName() + "");
 		JLabel price = new JLabel(item.getItemPrice() + "원");
@@ -79,17 +82,19 @@ public class Fourth extends JPanel {
 		JSpinner spinner = new JSpinner();
 		spinner.setBounds(184, 180, 79, 22);
 		add(spinner);
-		spinner.setValue(1);
 		
+
 		JLabel totalprice;
-		
-		if(item.getItemAmount() == 0) {
+
+		if (item.getItemAmount() == 0) {
+			spinner.setValue(0);
 			totalprice = new JLabel("재고 없음");
 			totalprice.setForeground(Color.red);
-		}else {
-			totalprice  = new JLabel("총 가격 : " + item.getItemPrice() + "원");
+		} else {
+			spinner.setValue(1);
+			totalprice = new JLabel("총 가격 : " + item.getItemPrice() + "원");
 		}
-		
+
 		spinner.addChangeListener(new ChangeListener() {
 
 			@Override
@@ -97,29 +102,31 @@ public class Fourth extends JPanel {
 
 				int num = (int) spinner.getValue();
 				
-				if(item.getItemAmount() == 0 && num ==0) {
-					
-				}else if(item.getItemAmount() == 0) {
+				if (item.getItemAmount() == 0 && num == 0) {
+
+				} else if (item.getItemAmount() == 0) {
 					JOptionPane.showMessageDialog(null, "재고가 없어서 구매가 불가능합니다.");
-					spinner.setValue(0);
-					totalprice.setText("재고 없음");
-				}else if(num > item.getItemAmount()) {
-					JOptionPane.showMessageDialog(null, "남은 수량을 초과하였습니다.");
-					num--;
+					num = 0;
 					spinner.setValue(num);
-					totalprice.setText("총 가격 : " + (num * item.getItemPrice()) + "원");
+				} else if (num > item.getItemAmount()) {
+					JOptionPane.showMessageDialog(null, "남은 수량을 초과하였습니다.");
+					num = item.getItemAmount();
+					spinner.setValue(num);
 				} else if (num < 1) {
 					JOptionPane.showMessageDialog(null, "1개이상 선택해 주세요.");
-					num++;
+					num = 1;
 					spinner.setValue(num);
-					totalprice.setText("총 가격 : " + (num * item.getItemPrice()) + "원");
-				}else {
+				}
+
+				if (num == 0) {
+					totalprice.setText("재고 없음");
+				} else {
 					totalprice.setText("총 가격 : " + (num * item.getItemPrice()) + "원");
 				}
-				
+
 			}
 		});
-		totalprice.setBounds(146, 206, 101, 29);
+		totalprice.setBounds(130, 206, 120, 29);
 		add(totalprice);
 
 		Calendar cal = new GregorianCalendar();
@@ -138,6 +145,17 @@ public class Fourth extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				if(MainFrame.user == null) {
+					JOptionPane.showMessageDialog(null, "로그인 부터 해주세요.");
+					return;
+				}
+
+				if (Integer.parseInt(spinner.getValue().toString()) == 0) {
+					JOptionPane.showMessageDialog(null, "재고가 없어서 구매가 불가능합니다.");
+					return;
+				}
+
 				ArrayList<Item> arr = MainFrame.user.getCart();
 				if (arr == null) {
 					arr = new ArrayList<Item>();
@@ -157,7 +175,8 @@ public class Fourth extends JPanel {
 				Login login = new Login();
 				login.setCustomer(MainFrame.user);
 
-				int result = JOptionPane.showConfirmDialog(null, "장바구니로 이동하시겠습니까?\n취소시 메인화면 ", "장바구니 이동", JOptionPane.YES_NO_OPTION);
+				int result = JOptionPane.showConfirmDialog(null, "장바구니로 이동하시겠습니까?\n취소시 메인화면 ", "장바구니 이동",
+						JOptionPane.YES_NO_OPTION);
 
 				if (result == JOptionPane.YES_OPTION) {// 확인
 					MyUtil.changePanel(f, MainFrame.currentPanel, new MyCart(f));
