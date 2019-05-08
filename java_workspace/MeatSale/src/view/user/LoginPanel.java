@@ -1,7 +1,10 @@
 package view.user;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -28,7 +31,8 @@ public class LoginPanel extends JPanel {
 		f.setSize(380, 240);
 		f.setLocationRelativeTo(null);
 		f.setTitle("로그인");
-
+		
+		setBackground(Color.white);
 		setLayout(null);
 
 		JTextField idTextField = new JTextField();
@@ -98,6 +102,44 @@ public class LoginPanel extends JPanel {
 				}
 
 			}
+		});
+		
+		//포커스 강제 지정
+		idTextField.setFocusTraversalKeysEnabled(false);
+		idTextField.addKeyListener(new KeyAdapter() {
+			 public void keyPressed(KeyEvent e) {
+				 if(e.getKeyCode() == KeyEvent.VK_TAB) {
+					 pwTextField.requestFocus();
+				 }
+				
+			 }
+
+		});
+		
+		pwTextField.setFocusTraversalKeysEnabled(false);
+		pwTextField.addKeyListener(new KeyAdapter() {
+			 public void keyPressed(KeyEvent e) {
+				 if(e.getKeyCode() == KeyEvent.VK_TAB) {
+					 loginBtn.requestFocus();
+				 }
+				 
+				 if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					 loginBtn.doClick();
+				 }
+				
+			 }
+
+		});
+		
+		loginBtn.setFocusTraversalKeysEnabled(false);
+		loginBtn.addKeyListener(new KeyAdapter() {
+			 public void keyPressed(KeyEvent e) {
+				 if(e.getKeyCode() == KeyEvent.VK_TAB) {
+					 idTextField.requestFocus();
+				 }
+				
+			 }
+
 		});
 
 	}
