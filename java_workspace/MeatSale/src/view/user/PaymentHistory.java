@@ -1,4 +1,4 @@
-package view.manage;
+package view.user;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,35 +6,32 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
-import check.ItemAdd;
 import common.MyUtil;
 import controller.Pay;
-import model.vo.Item;
 import model.vo.Payment;
 import view.MainFrame;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
+import view.manage.DeliverManagePanel;
 
-public class DeliverManagePanel extends JPanel {
+public class PaymentHistory extends JPanel {
+
 	MainFrame f;
 	private String[] columns;
 
-	public DeliverManagePanel(MainFrame f) {
+	public PaymentHistory(MainFrame f, String name) {
 		this.f = f;
 		setLayout(null);
 
@@ -42,9 +39,10 @@ public class DeliverManagePanel extends JPanel {
 		f.setLocationRelativeTo(null);
 
 		Pay pay = new Pay();
+		ArrayList<Payment> payArr = pay.getPayments();
 
 		columns = new String[] { "구매자", "이름", "가격", "수량", "배송소요일", "구매날짜", "배송현황" };
-		Object[][] rowData = pay.getArr(null, null);
+		Object[][] rowData = pay.getArr(null, name);
 
 		JTable table = new JTable(rowData, columns);
 
@@ -65,11 +63,6 @@ public class DeliverManagePanel extends JPanel {
 
 		scrollPane.setViewportView(table);
 
-		JTextField searchId = new JTextField();
-		searchId.setBounds(110, 31, 159, 21);
-		add(searchId);
-		searchId.setColumns(10);
-
 		JRadioButton allRadio = new JRadioButton("전체 보기");
 		allRadio.setBounds(8, 58, 121, 23);
 		add(allRadio);
@@ -80,11 +73,7 @@ public class DeliverManagePanel extends JPanel {
 
 		JRadioButton completeRadio = new JRadioButton("배송완료");
 		completeRadio.setBounds(322, 58, 121, 23);
-		add(completeRadio);
-
-		JLabel bel = new JLabel("아이디 검색");
-		bel.setBounds(12, 34, 86, 15);
-		add(bel);
+		add(completeRadio);	
 
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(allRadio);
@@ -95,14 +84,15 @@ public class DeliverManagePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				JRadioButton jr = (JRadioButton) e.getSource();
 				Object[][] obj;
 				if (jr.getText().equals("전체 보기")) {
-					obj = pay.getArr(null, searchId.getText());
+					obj = pay.getArr(null, name);
 				} else if (jr.getText().equals("배송중")) {
-					obj = pay.getArr("배송중", searchId.getText());
+					obj = pay.getArr("배송중", name);
 				} else {
-					obj = pay.getArr("배송완료", searchId.getText());
+					obj = pay.getArr("배송완료", name);
 				}
 
 				DefaultTableModel model = new DefaultTableModel(obj, columns);
@@ -113,32 +103,8 @@ public class DeliverManagePanel extends JPanel {
 		allRadio.addActionListener(ac);
 		allRadio.setSelected(true);
 
-		JButton btnNewButton = new JButton("검색하기");
-		btnNewButton.setBounds(312, 30, 97, 23);
-		add(btnNewButton);
 		ingRadio.addActionListener(ac);
 		completeRadio.addActionListener(ac);
-
-		btnNewButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				Object[][] obj;
-				
-				if(allRadio.isSelected()) {
-					obj = pay.getArr(null, searchId.getText());
-				}else if(ingRadio.isSelected()) {
-					obj = pay.getArr("배송중", searchId.getText());
-				}else {
-					obj = pay.getArr("배송완료", searchId.getText());
-				}
-				
-				DefaultTableModel model = new DefaultTableModel(obj, columns);
-				table.setModel(model);
-				
-			}
-		});
 
 	}
 
