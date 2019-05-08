@@ -53,6 +53,9 @@ public class MyUtil {
 	}
 
 	// 숫자인지 확인하는 메소드
+	/**
+	 * 숫자일시 true 리턴
+	 */
 	public static boolean isNum(String s) {
 		
 		try {

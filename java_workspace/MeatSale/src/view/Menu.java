@@ -12,9 +12,11 @@ import javax.swing.JOptionPane;
 
 import check.MyCart;
 import common.MyUtil;
+import view.manage.DeliverManagePanel;
 import view.manage.ManagerPanel;
 import view.shop.First;
 import view.user.LoginPanel;
+import view.user.PaymentHistory;
 import view.user.UserInfoPanel;
 
 public class Menu extends JMenu {
@@ -49,6 +51,7 @@ public class Menu extends JMenu {
 		});
 		
 		JMenu deliverMenu = new JMenu("마이페이지");// 회원정보 수정. 배송조회 . 결제 내역
+		
 		JMenu loginMenu = new JMenu("로그인");
 		loginMenu.addMouseListener(new MouseAdapter() {
 			@Override
@@ -82,11 +85,16 @@ public class Menu extends JMenu {
 			}
 		});
 
-		JMenuItem deliverMenuItem = new JMenuItem("배송조회");
 		JMenuItem payMenuItem = new JMenuItem("결제 내역");
+		
+		payMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MyUtil.changePanel(f, MainFrame.currentPanel, new PaymentHistory(f, MainFrame.user.getId()));
+			}
+		});
 
 		deliverMenu.add(modifyMenuItem);
-		deliverMenu.add(deliverMenuItem);
 		deliverMenu.add(payMenuItem);
 
 		if(MainFrame.user == null) {
