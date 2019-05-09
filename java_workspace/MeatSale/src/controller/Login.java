@@ -159,10 +159,10 @@ public class Login {
 		return null;
 	}
 	
-	public String findPw(String id, String name, String phone) {
+	public Customer findPw(String id, String name, String phone) {
 		for (Customer c : customerArr) {
 			if(c.getId().equals(id) && c.getName().equals(name) && c.getPhone().equals(phone)) {
-				return c.getPw();
+				return c;
 			}
 		}
 		return null;

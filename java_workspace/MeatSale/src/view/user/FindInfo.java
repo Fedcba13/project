@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -26,6 +27,7 @@ public class FindInfo extends JPanel {
 	private MainFrame f;
 	private JPanel curPanel;
 	private int dialogResult = 0;
+	Customer result = null;
 
 	public FindInfo(MainFrame f) {
 		this.f = f;
@@ -88,6 +90,7 @@ public class FindInfo extends JPanel {
 					JOptionPane.showMessageDialog(null, "해당하는 아이디가 없습니다");
 				} else {
 					JOptionPane.showMessageDialog(null, "해당하는 ID는 ' " + result + " '입니다.");
+					MyUtil.changePanel(f, FindInfo.this, new LoginPanel(f));
 				}
 
 			}
@@ -150,15 +153,15 @@ public class FindInfo extends JPanel {
 
 		// 비밀번호 변경 Dialog
 		JDialog pwDialog = new JDialog(f, "비밀번호 변경");
-		pwDialog.setSize(300, 200);
+		pwDialog.setSize(300, 250);
 		pwDialog.setLocationRelativeTo(null);
 		pwDialog.setLayout(null);
 
 		JLabel dlPwLabel = new JLabel("변경하실 비밀번호");
-		dlPwLabel.setBounds(12, 55, 100, 15);
+		dlPwLabel.setBounds(12, 55, 120, 15);
 		pwDialog.add(dlPwLabel);
 
-		JTextField dlPwTextField = new JTextField();
+		JPasswordField dlPwTextField = new JPasswordField();
 		dlPwTextField.setBounds(146, 52, 116, 21);
 		dlPwTextField.setColumns(10);
 		pwDialog.add(dlPwTextField);
@@ -167,7 +170,7 @@ public class FindInfo extends JPanel {
 		dlRePwLabel.setBounds(12, 103, 100, 15);
 		pwDialog.add(dlRePwLabel);
 
-		JTextField dlRePwTextField = new JTextField();
+		JPasswordField dlRePwTextField = new JPasswordField();
 		dlRePwTextField.setColumns(10);
 		dlRePwTextField.setBounds(146, 100, 116, 21);
 		pwDialog.add(dlRePwTextField);
@@ -200,7 +203,13 @@ public class FindInfo extends JPanel {
 		pwDialog.addWindowListener(new WindowAdapter() {
 			public void windowClosed(WindowEvent e) {
 				if(dialogResult == 1) {
-					System.out.println(dlPwTextField.getText());
+					if(result != null) {
+						Login login = new  Login();
+						result.setPw(dlPwTextField.getText());
+						login.setCustomer(result);
+						JOptionPane.showMessageDialog(null, "비밀번호 변경 완료");
+						MyUtil.changePanel(f, FindInfo.this, new LoginPanel(f));
+					}
 				}
 			}
 		});
@@ -221,7 +230,7 @@ public class FindInfo extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				dialogResult = 0;
 				Login login = new Login();
-				String result = login.findPw(idTextField2.getText(), nameTextField2.getText(),
+				result = login.findPw(idTextField2.getText(), nameTextField2.getText(),
 						phoneTextField2.getText());
 				if (result == null) {
 					JOptionPane.showMessageDialog(null, "해당하는 아이디가 없습니다");
