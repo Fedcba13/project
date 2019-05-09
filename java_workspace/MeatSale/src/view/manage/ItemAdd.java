@@ -1,4 +1,4 @@
-﻿package check;
+﻿package view.manage;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -26,7 +26,6 @@ import common.MyUtil;
 import controller.Goods;
 import model.vo.Item;
 import view.MainFrame;
-import view.manage.ItemManagePanel;
 
 public class ItemAdd extends JPanel {
 

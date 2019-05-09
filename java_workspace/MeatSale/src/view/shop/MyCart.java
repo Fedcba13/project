@@ -1,4 +1,4 @@
-package check;
+package view.shop;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -20,7 +21,6 @@ import controller.Pay;
 import model.vo.Item;
 import model.vo.Payment;
 import view.MainFrame;
-import view.shop.First;
 
 public class MyCart extends JPanel {
 
@@ -134,6 +134,8 @@ public class MyCart extends JPanel {
 				for (int i = 0; i < buylist.size(); i++) {
 					pay.addPayment(new Payment(MainFrame.user.getId(), buylist.get(i), date));
 				}//구매내역 저장
+				
+				JOptionPane.showMessageDialog(null, "구매 성공");
 				
 				MyUtil.changePanel(f, MainFrame.currentPanel, new First(f));
 				

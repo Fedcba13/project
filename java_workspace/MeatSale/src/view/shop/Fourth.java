@@ -25,7 +25,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import check.MyCart;
 import common.MyUtil;
 import controller.Goods;
 import controller.Login;
@@ -165,7 +164,6 @@ public class Fourth extends JPanel {
 				}
 				Item buyItem = new Item(item);
 				int buyCnt = Integer.parseInt(spinner.getValue().toString());
-				System.out.println("buycnt : " + buyCnt);
 				buyItem.setItemAmount(buyCnt);
 				arr.add(buyItem);
 

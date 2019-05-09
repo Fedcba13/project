@@ -12,11 +12,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import check.MyCart;
 import common.MyUtil;
 import view.manage.DeliverManagePanel;
 import view.manage.ManagerPanel;
 import view.shop.First;
+import view.shop.MyCart;
 import view.user.LoginPanel;
 import view.user.PaymentHistory;
 import view.user.UserInfoPanel;

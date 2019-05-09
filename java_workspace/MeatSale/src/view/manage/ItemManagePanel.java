@@ -14,7 +14,6 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import check.ItemAdd;
 import common.MyUtil;
 import controller.Goods;
 import model.vo.Item;
@@ -98,7 +97,6 @@ public class ItemManagePanel extends JPanel{
 					int result = JOptionPane.showConfirmDialog(null, str + "  =>  " + newStr + "로 변경 하시겠습니까?");
 
 					if (result == JOptionPane.YES_OPTION) {// 확인
-						System.out.println("확인\n"+c);
 						goods.setItem(c);
 					}
 					

@@ -21,12 +21,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import check.ItemAdd;
 import common.MyUtil;
 import controller.Pay;
 import model.vo.Item;
 import model.vo.Payment;
 import view.MainFrame;
+
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;

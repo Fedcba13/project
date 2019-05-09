@@ -162,7 +162,6 @@ public class Goods {
 		
 		if (index != -1) {
 			itemArr.set(index, c);
-			System.out.println(index);
 		}
 
 		saveFile();
