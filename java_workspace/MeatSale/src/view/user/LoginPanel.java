@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import common.MyUtil;
@@ -44,7 +45,8 @@ public class LoginPanel extends JPanel {
 		idLabel.setBounds(35, 36, 40, 15);
 		add(idLabel);
 
-		JTextField pwTextField = new JTextField();
+		
+		JPasswordField pwTextField = new JPasswordField();
 		pwTextField.setBounds(119, 92, 116, 21);
 		pwTextField.setColumns(10);
 		add(pwTextField);
@@ -142,8 +144,6 @@ public class LoginPanel extends JPanel {
 
 		});
 		
-		idTextField.requestFocus(true);
-
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -124,7 +125,7 @@ public class UserInfoPanel extends JPanel {
 		pwLabel.setBounds(12, 18, 77, 15);
 		pwPanel.add(pwLabel);
 
-		JTextField pwTextField = new JTextField();
+		JPasswordField pwTextField = new JPasswordField();
 		pwTextField.setColumns(10);
 		pwTextField.setBounds(101, 15, 145, 21);
 		pwPanel.add(pwTextField);
@@ -133,7 +134,7 @@ public class UserInfoPanel extends JPanel {
 		newPwLabel.setBounds(12, 51, 80, 15);
 		pwPanel.add(newPwLabel);
 
-		JTextField newPwTextField = new JTextField();
+		JPasswordField newPwTextField = new JPasswordField();
 		newPwTextField.setColumns(10);
 		newPwTextField.setBounds(101, 48, 145, 21);
 		pwPanel.add(newPwTextField);
@@ -142,7 +143,7 @@ public class UserInfoPanel extends JPanel {
 		reNewPwLabel.setBounds(12, 84, 80, 15);
 		pwPanel.add(reNewPwLabel);
 
-		JTextField reNewPwTextField = new JTextField();
+		JPasswordField reNewPwTextField = new JPasswordField();
 		reNewPwTextField.setColumns(10);
 		reNewPwTextField.setBounds(101, 81, 145, 21);
 		pwPanel.add(reNewPwTextField);

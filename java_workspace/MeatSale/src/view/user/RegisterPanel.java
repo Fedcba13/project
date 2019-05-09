@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import common.MyUtil;
@@ -88,7 +89,7 @@ public class RegisterPanel extends JPanel {
 		pwLabel.setBounds(12, 93, 77, 15);
 		add(pwLabel);
 
-		JTextField pwTextField = new JTextField();
+		JPasswordField pwTextField = new JPasswordField();
 		pwTextField.setColumns(10);
 		pwTextField.setBounds(101, 90, 145, 21);
 		add(pwTextField);
@@ -97,7 +98,7 @@ public class RegisterPanel extends JPanel {
 		repwLabel.setBounds(12, 129, 88, 15);
 		add(repwLabel);
 
-		JTextField repwTextField = new JTextField();
+		JPasswordField repwTextField = new JPasswordField();
 		repwTextField.setColumns(10);
 		repwTextField.setBounds(101, 126, 145, 21);
 		add(repwTextField);
