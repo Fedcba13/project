@@ -18,7 +18,7 @@ public class ManagerPanel extends JPanel{
 		this.f = f;
 		
 		
-		f.setTitle("관리자 메이 화면");
+		f.setTitle("관리자 메인 화면");
 		setBackground(Color.white);
 		f.setLocationRelativeTo(null);
 		
