@@ -28,6 +28,12 @@ public class Third extends JPanel {
 
 	public Third(MainFrame f, String cate1, String cate2, int pageNum) {
 		this.f = f;
+		
+		f.setSize(550, 350);
+		f.setTitle("상품 목록 화면");
+		setLayout(null);
+		setBackground(Color.white);
+		f.setLocationRelativeTo(null);
 
 		Goods goods = new Goods();
 
@@ -41,10 +47,6 @@ public class Third extends JPanel {
 		int num2 = (pageNum * 4) - 3;
 		int num3 = (pageNum * 4) - 2;
 		int num4 = (pageNum * 4) - 1;
-
-		f.setSize(550, 350);
-		setLayout(null);
-		setBackground(Color.white);
 
 		JPanel item1;
 		if (num1 < itemArr.size()) {

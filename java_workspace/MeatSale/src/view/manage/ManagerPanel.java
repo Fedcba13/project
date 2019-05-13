@@ -1,5 +1,6 @@
 package view.manage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +16,11 @@ public class ManagerPanel extends JPanel{
 	
 	public ManagerPanel(MainFrame f) {
 		this.f = f;
+		
+		
+		f.setTitle("관리자 메인 화면");
+		setBackground(Color.white);
+		f.setLocationRelativeTo(null);
 		
 		setLayout(null);
 		f.setSize(360,400);

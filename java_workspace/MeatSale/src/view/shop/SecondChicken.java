@@ -19,8 +19,10 @@ public class SecondChicken extends JPanel {
 		this.f = f;
 		setLayout(null);
 		
+		f.setTitle("닭 부위 선택 화면");
+		setBackground(Color.white);
 		f.setLocationRelativeTo(null);
-		f.setSize(450,400);
+		f.setSize(450,360);
 		
 		JLabel tender = new JLabel("닭가슴살");
 		tender.setBounds(100, 137, 57, 15);

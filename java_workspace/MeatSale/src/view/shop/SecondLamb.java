@@ -18,9 +18,12 @@ public class SecondLamb extends JPanel {
 
 	public SecondLamb(MainFrame f) {
 		this.f = f;
+		
+		f.setTitle("양 부위 선택 화면");
+		setBackground(Color.white);
 		setLayout(null);
 		f.setLocationRelativeTo(null);
-		f.setSize(450,400);
+		f.setSize(450,370);
 
 		Image png = new ImageIcon("images/양.PNG").getImage()
 				.getScaledInstance(450, 320, 0);

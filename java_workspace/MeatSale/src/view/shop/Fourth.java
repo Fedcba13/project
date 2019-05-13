@@ -25,7 +25,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import check.MyCart;
 import common.MyUtil;
 import controller.Goods;
 import controller.Login;
@@ -43,6 +42,9 @@ public class Fourth extends JPanel {
 
 		f.setSize(450, 400);
 		f.setLocationRelativeTo(null);
+		f.setTitle("상품 상세 화면");
+		setBackground(Color.white);
+		
 		setLayout(null);
 
 		Image scaledImage = new ImageIcon(item.getItemImageUrl()).getImage().getScaledInstance(150, 140, 0);
@@ -162,7 +164,6 @@ public class Fourth extends JPanel {
 				}
 				Item buyItem = new Item(item);
 				int buyCnt = Integer.parseInt(spinner.getValue().toString());
-				System.out.println("buycnt : " + buyCnt);
 				buyItem.setItemAmount(buyCnt);
 				arr.add(buyItem);
 

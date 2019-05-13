@@ -1,5 +1,6 @@
 package view.manage;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,9 @@ public class UserManagePanel extends JPanel {
 	public UserManagePanel(MainFrame f) {
 		this.f = f;
 		setLayout(null);
+		
+		f.setTitle("회원 목록 화면");
+		setBackground(Color.white);
 
 		f.setSize(650, 500);
 		f.setLocationRelativeTo(null);

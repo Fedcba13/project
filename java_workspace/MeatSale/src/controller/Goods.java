@@ -30,22 +30,24 @@ public class Goods {
 					ObjectOutputStream oos = new ObjectOutputStream(bos)) {
 
 				itemArr = new ArrayList<Item>();
-				itemArr.add(new Item(1, "호주산 소 등심1", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(2, "돼지 삼겹살", 2500, 17, "호주", "돼지", "등심", 3, "images/meat.jpg"));
-				itemArr.add(new Item(3, "횡성 꽃등심", 5000, 30, "한국", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(4, "호주 양 갈비", 8200, 22, "호주", "양", "갈비", 5, "images/meat.jpg"));
-				itemArr.add(new Item(5, "닭 한마리", 7200, 82, "한국", "닭", "전체", 2, "images/meat.jpg"));
-				itemArr.add(new Item(6, "호주산 소 등심6", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(7, "호주산 소 등심7", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(8, "호주산 소 등심8", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(9, "호주산 소 등심9", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(10, "호주산 소 등심10", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(11, "호주산 소 등심11", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(12, "호주산 소 등심12", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(13, "호주산 소 등심13", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(14, "호주산 소 등심14", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(15, "호주산 소 등심15", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
-				itemArr.add(new Item(16, "호주산 소 등심16", 3000, 10, "호주", "소", "등심", 2, "images/meat.jpg"));
+				itemArr.add(new Item(1, "국내산 소 안심", 3000, 10, "한국", "소", "안심", 2, "images/국내산 소 안심.gif"));
+				itemArr.add(new Item(2, "국내산 닭가슴살", 2500, 4, "한국", "닭", "닭가슴살", 3, "images/닭가슴살.gif"));
+				itemArr.add(new Item(3, "미국산 닭가슴살", 5200, 6, "미국", "닭", "닭가슴살", 2, "images/닭가슴살.gif"));
+				itemArr.add(new Item(4, "브라질산 닭 날개/윙", 7000, 20, "브라질", "닭", "날개/윙", 1, "images/닭날개윙.gif"));
+				itemArr.add(new Item(5, "국내산 목등심", 5900, 7, "한국", "소", "등심", 3, "images/소 목 등심 국내산.gif"));
+				itemArr.add(new Item(6, "국내산 돼지 앞다리살", 3600, 7, "한국", "돼지", "앞다리", 2, "images/앞다리살 제육용.gif"));
+				itemArr.add(new Item(7, "국내산 양 숄더랙", 9000, 24, "한국", "양", "어깨", 2, "images/양 숄더랙.gif"));
+				itemArr.add(new Item(8, "국내산 양 갈비", 10000, 19, "한국", "양", "갈비", 4, "images/양갈비.gif"));
+				itemArr.add(new Item(9, "국내산 양 삼겹살", 3000, 10, "한국", "양", "갈비", 1, "images/양삼겹살.gif"));
+				itemArr.add(new Item(10, "호주산 와규 치맛살", 6200, 11, "호주", "소", "채끝살", 2, "images/와규 치맛살.gif"));
+				itemArr.add(new Item(11, "국내산 돼지 가브리살", 4000, 6, "한국", "돼지", "등심", 2, "images/한돈 가브리살.gif"));
+				itemArr.add(new Item(12, "국내산 소 등심", 6000, 0, "한국", "소", "등심", 2, "images/소 목 등심 국내산.gif"));
+				itemArr.add(new Item(13, "국내산 소 등심 기름 제거", 5000, 2, "한국", "소", "등심", 2, "images/호주산 소 부채살.gif"));
+				itemArr.add(new Item(14, "국내산 소 목 등심", 5500, 3, "한국", "소", "등심", 2, "images/호주산 와규.gif"));
+				itemArr.add(new Item(15, "호주산 소 등심", 3000, 8, "호주", "소", "등심", 2, "images/소 목 등심 국내산.gif"));
+				itemArr.add(new Item(16, "호주산 소 목 등심", 6600, 10, "호주", "소", "등심", 2, "images/국내산 소 안심.gif"));
+				itemArr.add(new Item(17, "국내산 등심", 7000, 30, "한국", "소", "등심", 2, "images/와규 치맛살.gif"));
+				itemArr.add(new Item(18, "호주산 등심", 6000, 70, "호주", "소", "등심", 2, "images/한돈 항정살.gif"));
 
 				oos.writeObject(itemArr);
 
@@ -162,7 +164,6 @@ public class Goods {
 		
 		if (index != -1) {
 			itemArr.set(index, c);
-			System.out.println(index);
 		}
 
 		saveFile();

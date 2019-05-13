@@ -25,6 +25,8 @@ public class SecondBeef extends JPanel {
 		
 		f.setLocationRelativeTo(null);
 		f.setSize(450,400);
+		f.setTitle("소 부위 선택 화면");
+		setBackground(Color.white);
 		setLayout(null);
 		
 		

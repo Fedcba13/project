@@ -26,6 +26,7 @@ public class Customer implements Serializable {
 		this.addr = addr;
 		this.birth = birth;
 		this.phone = phone;
+		this.cart = new ArrayList<Item>();
 	}
 
 	public Customer(String id, String pw) {

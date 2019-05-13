@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -24,6 +25,7 @@ public class UserInfoPanel extends JPanel {
 	public UserInfoPanel(MainFrame f) {
 		this.f = f;
 
+		setBackground(Color.white);
 		setLayout(null);
 		f.setSize(450, 450);
 		f.setLocationRelativeTo(null);
@@ -34,6 +36,7 @@ public class UserInfoPanel extends JPanel {
 		defaultPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		add(defaultPanel);
 		defaultPanel.setLayout(null);
+		defaultPanel.setBackground(Color.white);
 
 		JLabel idLabel = new JLabel("아이디");
 		idLabel.setBounds(12, 18, 77, 15);
@@ -74,6 +77,7 @@ public class UserInfoPanel extends JPanel {
 		phonePanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		add(phonePanel);
 		phonePanel.setLayout(null);
+		phonePanel.setBackground(Color.white);
 
 		JLabel phoneLabel = new JLabel("핸드폰번호");
 		phoneLabel.setBounds(12, 12, 72, 15);
@@ -115,12 +119,13 @@ public class UserInfoPanel extends JPanel {
 		pwPanel.setBounds(10, 168, 400, 120);
 		add(pwPanel);
 		pwPanel.setLayout(null);
+		pwPanel.setBackground(Color.white);
 
 		JLabel pwLabel = new JLabel("비밀번호");
 		pwLabel.setBounds(12, 18, 77, 15);
 		pwPanel.add(pwLabel);
 
-		JTextField pwTextField = new JTextField();
+		JPasswordField pwTextField = new JPasswordField();
 		pwTextField.setColumns(10);
 		pwTextField.setBounds(101, 15, 145, 21);
 		pwPanel.add(pwTextField);
@@ -129,7 +134,7 @@ public class UserInfoPanel extends JPanel {
 		newPwLabel.setBounds(12, 51, 80, 15);
 		pwPanel.add(newPwLabel);
 
-		JTextField newPwTextField = new JTextField();
+		JPasswordField newPwTextField = new JPasswordField();
 		newPwTextField.setColumns(10);
 		newPwTextField.setBounds(101, 48, 145, 21);
 		pwPanel.add(newPwTextField);
@@ -138,7 +143,7 @@ public class UserInfoPanel extends JPanel {
 		reNewPwLabel.setBounds(12, 84, 80, 15);
 		pwPanel.add(reNewPwLabel);
 
-		JTextField reNewPwTextField = new JTextField();
+		JPasswordField reNewPwTextField = new JPasswordField();
 		reNewPwTextField.setColumns(10);
 		reNewPwTextField.setBounds(101, 81, 145, 21);
 		pwPanel.add(reNewPwTextField);
@@ -184,6 +189,7 @@ public class UserInfoPanel extends JPanel {
 		addrPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		add(addrPanel);
 		addrPanel.setLayout(null);
+		addrPanel.setBackground(Color.white);
 
 		JLabel addrLabel = new JLabel("주소");
 		addrLabel.setBounds(12, 15, 72, 15);

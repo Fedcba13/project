@@ -1,5 +1,6 @@
 package view.manage;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import check.ItemAdd;
 import common.MyUtil;
 import controller.Goods;
 import model.vo.Item;
@@ -26,6 +26,10 @@ public class ItemManagePanel extends JPanel{
 		this.f = f;
 		setLayout(null);
 
+		f.setTitle("상품 목록 화면");
+		setLayout(null);
+		setBackground(Color.white);
+		
 		f.setSize(650, 500);
 		f.setLocationRelativeTo(null);
 
@@ -93,7 +97,6 @@ public class ItemManagePanel extends JPanel{
 					int result = JOptionPane.showConfirmDialog(null, str + "  =>  " + newStr + "로 변경 하시겠습니까?");
 
 					if (result == JOptionPane.YES_OPTION) {// 확인
-						System.out.println("확인\n"+c);
 						goods.setItem(c);
 					}
 					
